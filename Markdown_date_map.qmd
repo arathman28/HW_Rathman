@@ -31,11 +31,11 @@ weeks between each consecutive pair.
 ```{r}
 sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
 
-#use a for loop to check each date against the one next to you 
+#use a for loop to check each date against the one next to it 
 for (x in 1: length(sample_dates) - 1){
-  dif <- interval(from = as.Date(sample_dates[x]), to = as.Date(sample_dates[x+1]))
-  print(month(dif))
-  print(weeks(dif))
+  dif <- interval(as.Date(sample_dates[x]), as.Date(sample_dates[x+1]))
+  print(time_length(dif, unit = "months"))
+  print(time_length(dif, unit = "weeks"))
 }
 ```
 
@@ -61,13 +61,16 @@ Question 4 Given a list of mixed date formats, use map() and possibly() from pur
 ```{r}
 date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
 
-get_month_name <- possibly(function(date_strings){
-  dashed_date <- as.Date(date_strings, format = "%Y-%m-%d")
-  if dashed_date is.na()
-  slash_date <- as.Date(date_strings, format = "%Y/%m/%d")
-  if slash_date is.na()
-  word_date <- as.Date(date_strings, format = "%d, %b, %Y")
-  
+get_month_name <- possibly(function(date_strings)){
+  if is.na() {
+    checked_date <- as.Date(date_strings, format = "%Y-%m-%d")
+  }
+  if is.na() {
+    checked_date <- as.Date(date_strings, format = "%Y/%m/%d")
+  }
+  if slash_date is.na() {
+    checked_date <- as.Date(date_strings, format = "%d, %b, %Y")
+  }
   
   
 })
