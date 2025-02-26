@@ -31,5 +31,22 @@ for (x in 1: length(sample_dates) - 1){
   print(weeks(dif))
 }
 
+#Question 3 Using map() and map_dbl(), compute the mean, median, and standard deviation for each
+#numeric vector in the following list:
+
+num_lists <- list(c(4, 16, 25, 36, 49), c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
+
+#Use a for loop to access each individual vector using [[]] to do so
+for (x in 1:3){
+  print("mean")
+  print(mean(num_lists[[x]]))
+  print("median")
+  print(median(num_lists[[x]]))
+  print("standard deviation")
+  print(sd(num_lists[[x]]))
+}
+
+
+
 
 
