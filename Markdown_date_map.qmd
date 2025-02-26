@@ -61,18 +61,25 @@ Question 4 Given a list of mixed date formats, use map() and possibly() from pur
 ```{r}
 date_strings <- list("2023-06-10", "2022/12/25", "15-Aug-2021", "InvalidDate")
 
-get_month_name <- possibly(function(date_strings)){
-  if is.na() {
-    checked_date <- as.Date(date_strings, format = "%Y-%m-%d")
-  }
-  if is.na() {
+get_month_name <- possibly(function(date_strings){
+  
+  checked_date <- as.Date(date_strings, format = "%Y-%m-%d")
+  if (is.na(checked_date)) {
     checked_date <- as.Date(date_strings, format = "%Y/%m/%d")
   }
-  if slash_date is.na() {
+  if (is.na(checked_date)) {
     checked_date <- as.Date(date_strings, format = "%d, %b, %Y")
   }
+  if (is.na(checked_date)) 
+    return("Not Valid Date")
+  
+  print(month(checked_date, label = TRUE, abbr = FALSE))
   
   
-})
+
+  }, otherwise = NA)
+
+month_names <- map(date_strings, get_month_name)
+
 ```
 
