@@ -24,10 +24,12 @@ head(isoweek)
 
 sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
 
-
+#use a for loop to check each date against the one next to you 
 for (x in 1: length(sample_dates) - 1){
-  dif <- interval(start = sample_dates[x], end = sample_dates[x+1])
+  dif <- seq(from = as.Date(sample_dates[x]), to = as.Date(sample_dates[x+1]))
+  print(month(dif))
+  print(weeks(dif))
 }
-dif
+
 
 
